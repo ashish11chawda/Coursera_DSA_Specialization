@@ -1,16 +1,22 @@
 #include <iostream>
 
-long long lcm_naive(int a, int b) {
-  for (long l = 1; l <= (long long) a * b; ++l)
-    if (l % a == 0 && l % b == 0)
-      return l;
+using namespace std;
 
-  return (long long) a * b;
+long long gcd(long long a, long long b) {
+	while (b) {
+		long long tmp = a % b;
+		a = b;
+		b = tmp;
+	}
+	return a;
 }
 
+
+long long lcm(long long a, long long b) {
+	return a / (long long)(gcd(a, b))* b;
+}
 int main() {
-  int a, b;
-  std::cin >> a >> b;
-  std::cout << lcm_naive(a, b) << std::endl;
-  return 0;
+	int a, b; 
+	cin >> a >> b; 
+	cout << lcm(a, b) << endl;
 }
