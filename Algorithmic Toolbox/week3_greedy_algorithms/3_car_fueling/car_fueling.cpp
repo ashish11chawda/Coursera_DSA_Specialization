@@ -6,9 +6,29 @@ using std::cout;
 using std::vector;
 using std::max;
 
-int compute_min_refills(int dist, int tank, vector<int> & stops) {
-    // write your code here
-    return -1;
+int compute_min_refills(int d, int m, vector<int> & stop) {
+    stop.insert(stop.begin(),0);
+    stop.insert(stop.end(),d);
+	
+    int curpos=0;
+    int prepos=0;
+    while(curpos < stop.size() ){
+    	int lastpos=curpos;
+    	while((curpos < stop.size()) && ((stop[curpos+1]-stop[lastpos])<= m)){
+    		curpos++;
+		}
+		if(curpos == lastpos){
+			return -1;
+		}
+		if(curpos<(stop.size())){
+			prepos++;
+		}
+		
+    
+	}
+    
+    
+    return prepos;
 }
 
 
